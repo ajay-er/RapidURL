@@ -20,6 +20,9 @@ dependencies:
   mongoose:
     specifier: ^8.1.1
     version: 8.1.1
+  short-unique-id:
+    specifier: ^5.0.3
+    version: 5.0.3
 
 devDependencies:
   '@types/cors':
@@ -1539,6 +1542,11 @@ packages:
 
   /setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
+    dev: false
+
+  /short-unique-id@5.0.3:
+    resolution: {integrity: sha512-yhniEILouC0s4lpH0h7rJsfylZdca10W9mDJRAFh3EpcSUanCHGb0R7kcFOIUCZYSAPo0PUD5ZxWQdW0T4xaug==}
+    hasBin: true
     dev: false
 
   /side-channel@1.0.4:
