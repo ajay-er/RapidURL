@@ -19,7 +19,7 @@ export const routes: Routes = [
     component: ErrorComponent,
   },
   {
-    path: 'analysis/:id',
+    path: 'analyse',
     component: AnalysisComponent,
   },
   {
