@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { ApiService, IURL } from '../api.service';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -65,6 +66,7 @@ export class HomeComponent {
   private fb = inject(FormBuilder);
   private api = inject(ApiService);
   private router = inject(Router);
+  private destroy$ = new Subject<void>();
 
   constructor() {
     this.urlForm = this.fb.group({
@@ -75,15 +77,23 @@ export class HomeComponent {
   submitForm() {
     if (this.urlForm.valid) {
       const enteredUrl = this.urlForm!.get('url')!.value;
-      this.api.create(enteredUrl).subscribe({
-        next: (res: IURL) => {
-          this.api.setData(res)
-          this.router.navigate(['short'])
-        },
-        error: (err: any) => {
-          console.log(err);
-        },
-      });
+      this.api
+        .create(enteredUrl)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe({
+          next: (res: IURL) => {
+            this.api.setData(res);
+            this.router.navigate(['short']);
+          },
+          error: (err: any) => {
+            console.log(err);
+          },
+        });
     }
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../environments/environment';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface IURL {
   id: string;
@@ -23,12 +23,11 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/url/report/${id}`);
   }
 
-  //set data 
-  private idSource = new Subject<IURL>();
+  private dataSource = new BehaviorSubject<IURL | null>(null);
 
-  urlData$ = this.idSource.asObservable();
+  urlData$ = this.dataSource.asObservable();
 
   setData(data: IURL) {
-    this.idSource.next(data);
+    this.dataSource.next(data);
   }
 }
