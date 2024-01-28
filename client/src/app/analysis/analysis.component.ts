@@ -62,6 +62,7 @@ export class AnalysisComponent {
               this.totalClicks$.next(res.totalClicks);
             },
             error: (err: any) => {
+              alert(err.error?.errors[0]?.message ?? "oops something wrong")
               console.log(err);
             },
           });
