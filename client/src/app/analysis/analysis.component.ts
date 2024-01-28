@@ -60,9 +60,10 @@ export class AnalysisComponent {
           .subscribe({
             next: (res: any) => {
               this.totalClicks$.next(res.totalClicks);
+              if (res.totalClicks === 0) alert("url doesn't used yet!");
             },
             error: (err: any) => {
-              alert(err.error?.errors[0]?.message ?? "oops something wrong")
+              alert(err.error?.errors[0]?.message ?? 'oops something wrong');
               console.log(err);
             },
           });

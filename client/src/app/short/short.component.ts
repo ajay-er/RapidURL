@@ -46,7 +46,7 @@ import { Subject, takeUntil } from 'rxjs';
             <a [href]="originalUrl" class="text-blue-500">{{ originalUrl }}</a>
           </div>
           <a
-            [routerLink]="['/analysis']"
+            [routerLink]="['/analyse']"
             class="text-white cursor-pointer bg-teal-500 font-bold p-2 text-center"
           >
             Total of clicks of your short URL
