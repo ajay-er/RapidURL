@@ -9,11 +9,11 @@ import {
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-urlform',
+  selector: 'app-url-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   template: `
-    <form [formGroup]="urlForm" (ngSubmit)="submitForm.emit()">
+    <form [formGroup]="urlForm" (ngSubmit)="submitForm.emit()" class="py-6">
       <div class="flex">
         <div class="relative w-full">
           <input
@@ -34,7 +34,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
       </div>
       <div
         *ngIf="
-          urlForm.get('url').hasError('pattern') && urlForm.get('url').touched
+          urlForm!.get('url')!.hasError('pattern') && urlForm!.get('url')!.touched
         "
         class="text-red-500 mt-2"
       >
@@ -47,7 +47,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class UrlformComponent {
   @Input() urlForm!: FormGroup;
-  @Input() placeholder!: string;
-  @Input() buttonLabel!: string;
+  @Input() placeholder: string = 'Enter here';
+  @Input() buttonLabel: string = 'SEARCH'
   @Output() submitForm = new EventEmitter<void>();
 }

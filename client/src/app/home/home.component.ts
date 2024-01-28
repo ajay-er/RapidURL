@@ -15,14 +15,14 @@ import { UrlformComponent } from '../urlform/urlform.component';
       <p class="text-center font-extrabold text-gray-600 text-4xl">
         Paste the URL to be shortened
       </p>
-      <app-url-form
+      <app-url-form 
         [urlForm]="urlForm"
         [placeholder]="'Enter the link here'"
         [buttonLabel]="'SHORTEN URL'"
         (submitForm)="submitForm()"
       ></app-url-form>
 
-      <p class="text-center font-medium text-gray-700 pb-6">
+      <p class="text-center font-medium text-gray-700 pb-4">
         RapidURL: Elevate Your Links, Simplify Your Sharing.
       </p>
     </div>
