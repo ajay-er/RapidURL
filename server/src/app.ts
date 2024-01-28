@@ -1,5 +1,4 @@
 import express, { Request, Response } from "express";
-import morgan from "morgan";
 import "express-async-errors";
 import cors from "cors";
 import { errorHandler } from "./middleware/error-handler";
@@ -13,8 +12,6 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
-
-app.use(morgan("dev"));
 
 app.use("/url", URLRouter);
 

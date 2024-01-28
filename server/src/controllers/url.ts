@@ -19,7 +19,7 @@ async function createShortURL(req: Request, res: Response) {
 
 	await newURL.save();
 
-	return res.json({ id: shortId });
+	return res.json({ id: shortId , url: body.url });
 }
 
 async function getReport(req: Request, res: Response) {
