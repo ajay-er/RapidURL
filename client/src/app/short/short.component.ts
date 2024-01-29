@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ApiService, IURL } from '../api.service';
 import { Router, RouterModule } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-short',
@@ -83,7 +84,7 @@ export class ShortComponent {
   }
 
   getUrl(): string {
-    return window.location.origin + '/' + this.shortenedUrl;
+    return environment.apiUrl + '/' + this.shortenedUrl;
   }
   
   ngOnDestroy() {
